@@ -63,7 +63,7 @@ const TableForm = ({
 
   //Delete Function
   const deleteRow = (id) => {
-    setList(list.filter((row) => row.id != id));
+    setList(list.filter((row) => row.id !== id));
   };
   return (
     <>
