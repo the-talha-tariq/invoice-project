@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
-    const handlePrint=()=>{
-        window.print();
-      }
+  const handlePrint = () => {
+    window.print();
+  };
   return (
     <>
-     <header className="flex flex-col items-center justify-center mb-5 xl:flex-row xl:justify-between">
+      <header className="flex flex-col items-center justify-center mb-5 xl:flex-row xl:justify-between">
         <div>
-          <h1 className='font-bold uppercase tracking-wide text-4xl mb-3'>Invoice</h1>
+          <h1 className="font-bold uppercase tracking-wide text-4xl mb-3">
+            Invoice
+          </h1>
         </div>
-          <div>
+        {/* <div>
             <ul className="flex items-center justify-between flex-wrap">
             <li><button className="bg-gray-500 text-white font-bold py-2 px-5 rounded shadow
                                   border-2 border-gray-500
@@ -25,10 +27,10 @@ const Header = () => {
                                   hover:bg-transparent hover:text-green-500
                                   transition-all duration-300">Send</button></li>
             </ul>
-          </div>
-      </header> 
+          </div> */}
+      </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

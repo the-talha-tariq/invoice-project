@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const MainDetails = ({name,address}) => {
+const MainDetails = ({ name, address }) => {
   return (
     <>
-     <section className='flex flex-col items-end justify-end'>
-        <h2 className='text-xl uppercase' >{name}</h2>
+      <section className="flex flex-col items-end justify-end">
+        <h2 className="font-bold text-xl uppercase mb-1 md:text-4xl">{name}</h2>
         <p>{address}</p>
-      </section> 
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default MainDetails
+export default MainDetails;
