@@ -1,0 +1,90 @@
+import React from 'react'
+import {v4 as uuidv4} from 'uuid'
+
+const TableForm = ({description,setDescription,
+                    quantity,setQuantity,
+                    amount,setAmount,
+                    price,setPrice,
+                    list,setList}) => {
+
+const calculateAmount=(amount)=>
+{
+    setAmount(price*quantity);
+    return amount;
+}
+const handleSubmit=(e)=>
+{
+    e.preventDefault();
+    const newItems={
+        id:uuidv4(),
+        description,
+        quantity,
+        price,
+        amount
+    }
+    setDescription("");
+    setQuantity("");
+    setAmount("");
+    setPrice("");
+    setList([...list,newItems]);
+    console.log(newItems);
+}
+
+  return (
+    <>
+    <form onSubmit={handleSubmit}>
+        <div className='flex flex-col md:mt-16'>
+            <label htmlFor="description">Item Description</label> 
+            <input type="text" name='description' id='description' placeholder='Item Description'
+            value={description} onChange={(e)=>setDescription(e.target.value)} />
+        </div> 
+        <div className='md:grid grid-cols-3 gap-10 md:mt-6'>
+            <div className='flex flex-col'>
+                <label htmlFor="quantity">Enter Quantity</label> 
+                <input type="number" name='quantity' id='quantity' placeholder='Enter Quantity'
+                value={quantity} onChange={(e)=>setQuantity(e.target.value)} />
+            </div> 
+            <div className='flex flex-col'>
+                <label htmlFor="price">Enter Price</label> 
+                <input type="number" name='price' id='price' placeholder='Enter Price'
+                value={price} onChange={(e)=>setPrice(e.target.value)} />
+            </div> 
+            <div className='flex flex-col'>
+                <label htmlFor="amount">Enter Amount</label> 
+                <p>{calculateAmount(amount)}</p>
+            </div> 
+        </div>
+        <button type='submit' 
+        className="mb-5 mt-5 bg-blue-500 text-white font-bold py-2 px-5 rounded shadow
+        border-2 border-blue-500
+        hover:bg-transparent hover:text-blue-500
+        transition-all duration-300">Add Table Item</button>
+    </form>
+        <table width='100%' className='mb-10'>
+        <thead className='bg-gray-200 p-1'>
+                        <tr>
+                        <td className='font-bold'>Description</td>
+                        <td className='font-bold'>Quantity</td>
+                        <td className='font-bold'>Price</td>
+                        <td className='font-bold'>Amount</td>
+                        </tr>
+                    </thead>
+            {list.map(({id,description,quantity,price,amount})=>(
+                <React.Fragment key={id}>
+                    <tbody>
+                        <tr>
+                            <td>{description}</td>
+                            <td>{quantity}</td>
+                            <td>{price}</td>
+                            <td>{amount}</td>
+                        </tr>
+                    </tbody>
+                </React.Fragment>
+            ))}
+        </table>
+    
+    </>
+  )
+}
+
+export default TableForm
